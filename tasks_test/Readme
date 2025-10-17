@@ -1,0 +1,17 @@
+git clone https://github.com/angejacome/pSymfoni.git
+cd pSymfoni
+cp env.dev .env
+//Backend
+cd backend
+composer install
+php bin/console secret:generate
+php bin/console doctrine:database:create
+php bin/console doctrine:migrations:migrate
+symfony serve
+# o
+php -S localhost:8000 -t public
+//Frontend
+cd frontend
+npm install
+npm start
+const API_URL = "http://localhost:8000/api/tasks";
